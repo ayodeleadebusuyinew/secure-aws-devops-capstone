@@ -1,0 +1,373 @@
+
+       _               _
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V /
+  \___|_| |_|\___|\___|_|\_\___/ \_/
+
+By Prisma Cloud | version: 3.3.1 
+
+terraform scan results:
+
+Passed checks: 24, Failed checks: 6, Skipped checks: 0
+
+Check: CKV_AWS_386: "Reduce potential for WhoAMI cloud image name confusion attack"
+	PASSED for resource: aws_ami.ubuntu
+	File: /main.tf:12-25
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-supply-chain-policies/bc-aws-386
+Check: CKV_AWS_46: "Ensure no hard-coded secrets exist in EC2 user data"
+	PASSED for resource: module.ec2.aws_instance.capstone_server
+	File: /modules/ec2/main.tf:4-42
+	Calling File: /main.tf:41-51
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/secrets-policies/bc-aws-secrets-1
+Check: CKV_AWS_126: "Ensure that detailed monitoring is enabled for EC2 instances"
+	PASSED for resource: module.ec2.aws_instance.capstone_server
+	File: /modules/ec2/main.tf:4-42
+	Calling File: /main.tf:41-51
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/ensure-that-detailed-monitoring-is-enabled-for-ec2-instances
+Check: CKV_AWS_79: "Ensure Instance Metadata Service Version 1 is not enabled"
+	PASSED for resource: module.ec2.aws_instance.capstone_server
+	File: /modules/ec2/main.tf:4-42
+	Calling File: /main.tf:41-51
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-31
+Check: CKV_AWS_8: "Ensure all data stored in the Launch configuration or instance Elastic Blocks Store is securely encrypted"
+	PASSED for resource: module.ec2.aws_instance.capstone_server
+	File: /modules/ec2/main.tf:4-42
+	Calling File: /main.tf:41-51
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/general-13
+Check: CKV_AWS_393: "Ensure AWS GitHub Actions OIDC authorization policies only allow safe claims and claim order on IAM role"
+	PASSED for resource: module.iam.aws_iam_role.ec2_role
+	File: /modules/iam/main.tf:1-22
+	Calling File: /main.tf:27-31
+Check: CKV_AWS_274: "Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy"
+	PASSED for resource: module.iam.aws_iam_role.ec2_role
+	File: /modules/iam/main.tf:1-22
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-274
+Check: CKV_AWS_61: "Ensure AWS IAM policy does not allow assume role permission across all services"
+	PASSED for resource: module.iam.aws_iam_role.ec2_role
+	File: /modules/iam/main.tf:1-22
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-iam-45
+Check: CKV_AWS_60: "Ensure IAM role allows only specific services or principals to assume it"
+	PASSED for resource: module.iam.aws_iam_role.ec2_role
+	File: /modules/iam/main.tf:1-22
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-iam-44
+Check: CKV_AWS_62: "Ensure IAM policies that allow full "*-*" administrative privileges are not created"
+	PASSED for resource: module.iam.aws_iam_role_policy.ec2_policy
+	File: /modules/iam/main.tf:24-44
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-iam-45
+Check: CKV_AWS_287: "Ensure IAM policies does not allow credentials exposure"
+	PASSED for resource: module.iam.aws_iam_role_policy.ec2_policy
+	File: /modules/iam/main.tf:24-44
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-287
+Check: CKV_AWS_288: "Ensure IAM policies does not allow data exfiltration"
+	PASSED for resource: module.iam.aws_iam_role_policy.ec2_policy
+	File: /modules/iam/main.tf:24-44
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-288
+Check: CKV_AWS_289: "Ensure IAM policies does not allow permissions management / resource exposure without constraints"
+	PASSED for resource: module.iam.aws_iam_role_policy.ec2_policy
+	File: /modules/iam/main.tf:24-44
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-289
+Check: CKV_AWS_286: "Ensure IAM policies does not allow privilege escalation"
+	PASSED for resource: module.iam.aws_iam_role_policy.ec2_policy
+	File: /modules/iam/main.tf:24-44
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-286
+Check: CKV_AWS_63: "Ensure no IAM policies documents allow "*" as a statement's actions"
+	PASSED for resource: module.iam.aws_iam_role_policy.ec2_policy
+	File: /modules/iam/main.tf:24-44
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/iam-48
+Check: CKV_AWS_23: "Ensure every security group and rule has a description"
+	PASSED for resource: module.security_group.aws_security_group.capstone_sg
+	File: /modules/security-group/main.tf:1-44
+	Calling File: /main.tf:33-39
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-31
+Check: CKV_AWS_24: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22"
+	PASSED for resource: module.security_group.aws_security_group.capstone_sg
+	File: /modules/security-group/main.tf:1-44
+	Calling File: /main.tf:33-39
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-1-port-security
+Check: CKV_AWS_25: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 3389"
+	PASSED for resource: module.security_group.aws_security_group.capstone_sg
+	File: /modules/security-group/main.tf:1-44
+	Calling File: /main.tf:33-39
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-2
+Check: CKV_AWS_260: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 80"
+	PASSED for resource: module.security_group.aws_security_group.capstone_sg
+	File: /modules/security-group/main.tf:1-44
+	Calling File: /main.tf:33-39
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-groups-do-not-allow-ingress-from-00000-to-port-80
+Check: CKV_AWS_277: "Ensure no security groups allow ingress from 0.0.0.0:0 to port -1"
+	PASSED for resource: module.security_group.aws_security_group.capstone_sg
+	File: /modules/security-group/main.tf:1-44
+	Calling File: /main.tf:33-39
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-group-does-not-allow-all-traffic-on-all-ports
+Check: CKV_AWS_41: "Ensure no hard coded AWS access key and secret key exists in provider"
+	PASSED for resource: aws.default
+	File: /provider.tf:12-14
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/secrets-policies/bc-aws-secrets-5
+Check: CKV2_AWS_56: "Ensure AWS Managed IAMFullAccess IAM policy is not used."
+	PASSED for resource: module.iam.aws_iam_role.ec2_role
+	File: /modules/iam/main.tf:1-22
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-56
+Check: CKV2_AWS_41: "Ensure an IAM role is attached to EC2 instance"
+	PASSED for resource: module.ec2.aws_instance.capstone_server
+	File: /modules/ec2/main.tf:4-42
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-an-iam-role-is-attached-to-ec2-instance
+Check: CKV2_AWS_40: "Ensure AWS IAM policy does not allow full IAM privileges"
+	PASSED for resource: module.iam.aws_iam_role_policy.ec2_policy
+	File: /modules/iam/main.tf:24-44
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40
+Check: CKV_AWS_135: "Ensure that EC2 is EBS optimized"
+	FAILED for resource: module.ec2.aws_instance.capstone_server
+	File: /modules/ec2/main.tf:4-42
+	Calling File: /main.tf:41-51
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-ec2-is-ebs-optimized
+
+		4  | resource "aws_instance" "capstone_server" {
+		5  |   ami                         = var.ami_id
+		6  |   instance_type               = var.instance_type
+		7  |   key_name                    = var.key_name
+		8  |   subnet_id                   = var.subnet_id
+		9  |   vpc_security_group_ids      = [var.security_group_id]
+		10 |   iam_instance_profile        = var.instance_profile_name
+		11 |   associate_public_ip_address = true
+		12 |   monitoring                  = true
+		13 | 
+		14 |   metadata_options {
+		15 |     http_endpoint = "enabled"
+		16 |     http_tokens   = "required"
+		17 |   }
+		18 | 
+		19 |   root_block_device {
+		20 |     volume_size           = 20
+		21 |     volume_type           = "gp3"
+		22 |     encrypted             = true
+		23 |     delete_on_termination = true
+		24 |   }
+		25 | 
+		26 |   user_data = <<-EOF
+		27 |               #!/bin/bash
+		28 |               apt update -y
+		29 |               apt install -y nginx curl wget
+		30 |               systemctl enable nginx
+		31 |               systemctl start nginx
+		32 |               echo "<h1>Secure AWS DevOps Capstone</h1><p>Provisioned by Terraform and prepared for Jenkins CI/CD, DevSecOps, and monitoring.</p>" > /var/www/html/index.html
+		33 |               EOF
+		34 | 
+		35 |   tags = {
+		36 |     Name        = "${var.project_name}-${var.environment}-app-server"
+		37 |     Environment = var.environment
+		38 |     ManagedBy   = "Terraform"
+		39 |     Project     = var.project_name
+		40 |     Security    = "Hardened"
+		41 |   }
+		42 | }
+Check: CKV_AWS_88: "EC2 instance should not have public IP."
+	FAILED for resource: module.ec2.aws_instance.capstone_server
+	File: /modules/ec2/main.tf:4-42
+	Calling File: /main.tf:41-51
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/public-policies/public-12
+
+		4  | resource "aws_instance" "capstone_server" {
+		5  |   ami                         = var.ami_id
+		6  |   instance_type               = var.instance_type
+		7  |   key_name                    = var.key_name
+		8  |   subnet_id                   = var.subnet_id
+		9  |   vpc_security_group_ids      = [var.security_group_id]
+		10 |   iam_instance_profile        = var.instance_profile_name
+		11 |   associate_public_ip_address = true
+		12 |   monitoring                  = true
+		13 | 
+		14 |   metadata_options {
+		15 |     http_endpoint = "enabled"
+		16 |     http_tokens   = "required"
+		17 |   }
+		18 | 
+		19 |   root_block_device {
+		20 |     volume_size           = 20
+		21 |     volume_type           = "gp3"
+		22 |     encrypted             = true
+		23 |     delete_on_termination = true
+		24 |   }
+		25 | 
+		26 |   user_data = <<-EOF
+		27 |               #!/bin/bash
+		28 |               apt update -y
+		29 |               apt install -y nginx curl wget
+		30 |               systemctl enable nginx
+		31 |               systemctl start nginx
+		32 |               echo "<h1>Secure AWS DevOps Capstone</h1><p>Provisioned by Terraform and prepared for Jenkins CI/CD, DevSecOps, and monitoring.</p>" > /var/www/html/index.html
+		33 |               EOF
+		34 | 
+		35 |   tags = {
+		36 |     Name        = "${var.project_name}-${var.environment}-app-server"
+		37 |     Environment = var.environment
+		38 |     ManagedBy   = "Terraform"
+		39 |     Project     = var.project_name
+		40 |     Security    = "Hardened"
+		41 |   }
+		42 | }
+Check: CKV_AWS_355: "Ensure no IAM policies documents allow "*" as a statement's resource for restrictable actions"
+	FAILED for resource: module.iam.aws_iam_role_policy.ec2_policy
+	File: /modules/iam/main.tf:24-44
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-355
+
+		24 | resource "aws_iam_role_policy" "ec2_policy" {
+		25 |   name = "${var.project_name}-${var.environment}-ec2-policy"
+		26 |   role = aws_iam_role.ec2_role.id
+		27 | 
+		28 |   policy = jsonencode({
+		29 |     Version = "2012-10-17"
+		30 |     Statement = [
+		31 |       {
+		32 |         Effect = "Allow"
+		33 |         Action = [
+		34 |           "cloudwatch:PutMetricData",
+		35 |           "ec2:DescribeTags",
+		36 |           "logs:CreateLogGroup",
+		37 |           "logs:CreateLogStream",
+		38 |           "logs:PutLogEvents",
+		39 |         ]
+		40 |         Resource = "*"
+		41 |       }
+		42 |     ]
+		43 |   })
+		44 | }
+
+Check: CKV_AWS_290: "Ensure IAM policies does not allow write access without constraints"
+	FAILED for resource: module.iam.aws_iam_role_policy.ec2_policy
+	File: /modules/iam/main.tf:24-44
+	Calling File: /main.tf:27-31
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-290
+
+		24 | resource "aws_iam_role_policy" "ec2_policy" {
+		25 |   name = "${var.project_name}-${var.environment}-ec2-policy"
+		26 |   role = aws_iam_role.ec2_role.id
+		27 | 
+		28 |   policy = jsonencode({
+		29 |     Version = "2012-10-17"
+		30 |     Statement = [
+		31 |       {
+		32 |         Effect = "Allow"
+		33 |         Action = [
+		34 |           "cloudwatch:PutMetricData",
+		35 |           "ec2:DescribeTags",
+		36 |           "logs:CreateLogGroup",
+		37 |           "logs:CreateLogStream",
+		38 |           "logs:PutLogEvents",
+		39 |         ]
+		40 |         Resource = "*"
+		41 |       }
+		42 |     ]
+		43 |   })
+		44 | }
+
+Check: CKV_AWS_382: "Ensure no security groups allow egress from 0.0.0.0:0 to port -1"
+	FAILED for resource: module.security_group.aws_security_group.capstone_sg
+	File: /modules/security-group/main.tf:1-44
+	Calling File: /main.tf:33-39
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-382
+
+		1  | resource "aws_security_group" "capstone_sg" {
+		2  |   name        = "${var.project_name}-${var.environment}-sg"
+		3  |   description = "Restricted security group for Secure AWS DevOps Capstone"
+		4  |   vpc_id      = var.vpc_id
+		5  | 
+		6  |   ingress {
+		7  |     description = "Restricted SSH access from engineer IP"
+		8  |     from_port   = 22
+		9  |     to_port     = 22
+		10 |     protocol    = "tcp"
+		11 |     cidr_blocks = [var.my_ip]
+		12 |   }
+		13 | 
+		14 |   ingress {
+		15 |     description = "HTTP access for application testing"
+		16 |     from_port   = 80
+		17 |     to_port     = 80
+		18 |     protocol    = "tcp"
+		19 |     cidr_blocks = [var.my_ip]
+		20 |   }
+		21 | 
+		22 |   ingress {
+		23 |     description = "Node Exporter metrics access"
+		24 |     from_port   = 9100
+		25 |     to_port     = 9100
+		26 |     protocol    = "tcp"
+		27 |     cidr_blocks = [var.my_ip]
+		28 |   }
+		29 | 
+		30 |   egress {
+		31 |     description = "Allow outbound internet access"
+		32 |     from_port   = 0
+		33 |     to_port     = 0
+		34 |     protocol    = "-1"
+		35 |     cidr_blocks = ["0.0.0.0/0"]
+		36 |   }
+		37 | 
+		38 |   tags = {
+		39 |     Name        = "${var.project_name}-${var.environment}-sg"
+		40 |     Environment = var.environment
+		41 |     ManagedBy   = "Terraform"
+		42 |     Project     = var.project_name
+		43 |   }
+		44 | }
+Check: CKV2_AWS_5: "Ensure that Security Groups are attached to another resource"
+	FAILED for resource: module.security_group.aws_security_group.capstone_sg
+	File: /modules/security-group/main.tf:1-44
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-that-security-groups-are-attached-to-ec2-instances-or-elastic-network-interfaces-enis
+
+		1  | resource "aws_security_group" "capstone_sg" {
+		2  |   name        = "${var.project_name}-${var.environment}-sg"
+		3  |   description = "Restricted security group for Secure AWS DevOps Capstone"
+		4  |   vpc_id      = var.vpc_id
+		5  | 
+		6  |   ingress {
+		7  |     description = "Restricted SSH access from engineer IP"
+		8  |     from_port   = 22
+		9  |     to_port     = 22
+		10 |     protocol    = "tcp"
+		11 |     cidr_blocks = [var.my_ip]
+		12 |   }
+		13 | 
+		14 |   ingress {
+		15 |     description = "HTTP access for application testing"
+		16 |     from_port   = 80
+		17 |     to_port     = 80
+		18 |     protocol    = "tcp"
+		19 |     cidr_blocks = [var.my_ip]
+		20 |   }
+		21 | 
+		22 |   ingress {
+		23 |     description = "Node Exporter metrics access"
+		24 |     from_port   = 9100
+		25 |     to_port     = 9100
+		26 |     protocol    = "tcp"
+		27 |     cidr_blocks = [var.my_ip]
+		28 |   }
+		29 | 
+		30 |   egress {
+		31 |     description = "Allow outbound internet access"
+		32 |     from_port   = 0
+		33 |     to_port     = 0
+		34 |     protocol    = "-1"
+		35 |     cidr_blocks = ["0.0.0.0/0"]
+		36 |   }
+		37 | 
+		38 |   tags = {
+		39 |     Name        = "${var.project_name}-${var.environment}-sg"
+		40 |     Environment = var.environment
+		41 |     ManagedBy   = "Terraform"
+		42 |     Project     = var.project_name
+		43 |   }
+		44 | }
+

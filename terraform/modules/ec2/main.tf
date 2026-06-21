@@ -1,3 +1,6 @@
+#checkov:skip=CKV_AWS_88:Public IP is required for this capstone lab because there is no ALB, VPN, or private subnet bastion yet. In production this EC2 would be private behind an ALB.
+#checkov:skip=CKV_AWS_135:t2.micro is used due to AWS account vCPU quota limitation and does not support explicit EBS optimization like larger production instances.
+
 resource "aws_instance" "capstone_server" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
@@ -7,6 +10,11 @@ resource "aws_instance" "capstone_server" {
   iam_instance_profile        = var.instance_profile_name
   associate_public_ip_address = true
   monitoring                  = true
+
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens   = "required"
+  }
 
   root_block_device {
     volume_size           = 20
