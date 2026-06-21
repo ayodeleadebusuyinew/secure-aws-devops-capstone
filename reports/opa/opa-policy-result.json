@@ -1,0 +1,13 @@
+{
+  "errors": [
+    {
+      "message": "empty module",
+      "code": "rego_parse_error",
+      "location": {
+        "file": "security/opa/terraform-policy.rego",
+        "row": 0,
+        "col": 0
+      }
+    }
+  ]
+}
