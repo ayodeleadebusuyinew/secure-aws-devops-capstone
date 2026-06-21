@@ -113,14 +113,14 @@ Check: CKV_AWS_41: "Ensure no hard coded AWS access key and secret key exists in
 	PASSED for resource: aws.default
 	File: /provider.tf:12-14
 	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/secrets-policies/bc-aws-secrets-5
-Check: CKV2_AWS_56: "Ensure AWS Managed IAMFullAccess IAM policy is not used."
-	PASSED for resource: module.iam.aws_iam_role.ec2_role
-	File: /modules/iam/main.tf:1-22
-	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-56
 Check: CKV2_AWS_41: "Ensure an IAM role is attached to EC2 instance"
 	PASSED for resource: module.ec2.aws_instance.capstone_server
 	File: /modules/ec2/main.tf:4-42
 	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-an-iam-role-is-attached-to-ec2-instance
+Check: CKV2_AWS_56: "Ensure AWS Managed IAMFullAccess IAM policy is not used."
+	PASSED for resource: module.iam.aws_iam_role.ec2_role
+	File: /modules/iam/main.tf:1-22
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-56
 Check: CKV2_AWS_40: "Ensure AWS IAM policy does not allow full IAM privileges"
 	PASSED for resource: module.iam.aws_iam_role_policy.ec2_policy
 	File: /modules/iam/main.tf:24-44
