@@ -56,7 +56,7 @@ pipeline {
             steps {
                 dir('terraform') {
                     sh '''
-                    terraform plan -var-file=envs/dev.tfvars -out=tfplan
+                    terraform plan -var-file=envs/jenkins.tfvars -out=tfplan
                     terraform show -json tfplan > tfplan.json
                     '''
                 }
