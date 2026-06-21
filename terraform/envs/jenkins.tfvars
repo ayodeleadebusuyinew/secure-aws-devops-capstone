@@ -1,0 +1,6 @@
+aws_region    = "us-east-1"
+environment   = "dev"
+project_name  = "secure-devops-capstone"
+my_ip         = "104.50.251.200/32"
+key_name      = "devops-capstone-key"
+instance_type = "t2.micro"

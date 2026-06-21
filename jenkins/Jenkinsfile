@@ -1,109 +1,116 @@
 pipeline {
-    agent any
+agent any
 
-    environment {
-        AWS_DEFAULT_REGION = 'us-east-1'
-        TF_IN_AUTOMATION = 'true'
-    }
-
-    stages {
-        stage('Checkout Code') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Terraform Format Check') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform fmt -check -recursive'
-                }
-            }
-        }
-
-        stage('Terraform Init') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform init'
-                }
-            }
-        }
-
-        stage('Terraform Validate') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform validate'
-                }
-            }
-        }
-
-        stage('Checkov IaC Scan') {
-            steps {
-                sh '''
-                if [ -d ".venv-checkov" ]; then
-                  . .venv-checkov/bin/activate
-                  mkdir -p reports/checkov
-                  checkov -d terraform --output cli > reports/checkov/jenkins-checkov-report.txt || true
-                  deactivate
-                else
-                  echo "Checkov virtual environment not found. Install Checkov on Jenkins agent."
-                fi
-                '''
-            }
-        }
-
-        stage('Terraform Plan') {
-            steps {
-                dir('terraform') {
-                    sh '''
-                    terraform plan -var-file=envs/jenkins.tfvars -out=tfplan
-                    terraform show -json tfplan > tfplan.json
-                    '''
-                }
-            }
-        }
-
-        stage('OPA Policy Check') {
-            steps {
-                sh '''
-                mkdir -p reports/opa
-                opa eval --data security/opa/terraform-policy.rego --input terraform/tfplan.json "data.terraform.security.deny" > reports/opa/jenkins-opa-policy-result.json
-                cat reports/opa/jenkins-opa-policy-result.json
-                '''
-            }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform apply -auto-approve tfplan'
-                }
-            }
-        }
-
-        stage('Archive Security Reports') {
-            steps {
-                archiveArtifacts artifacts: 'reports/**/*', allowEmptyArchive: true
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'Secure AWS DevOps pipeline completed successfully.'
-        }
-
-        failure {
-            echo 'Pipeline failed. Review Terraform, Checkov, OPA, or AWS errors.'
-        }
-
-        always {
-            echo 'Pipeline execution finished.'
-        }
-    }
-}
+```
 environment {
     AWS_DEFAULT_REGION = 'us-east-1'
     AWS_PAGER = ''
     TF_IN_AUTOMATION = 'true'
+}
+
+stages {
+    stage('Checkout Code') {
+        steps {
+            checkout scm
+        }
+    }
+
+    stage('Verify Tools') {
+        steps {
+            sh '''
+            terraform version
+            aws --version
+            opa version
+            checkov --version
+            git --version
+            aws sts get-caller-identity
+            '''
+        }
+    }
+
+    stage('Terraform Format Check') {
+        steps {
+            dir('terraform') {
+                sh 'terraform fmt -check -recursive'
+            }
+        }
+    }
+
+    stage('Terraform Init') {
+        steps {
+            dir('terraform') {
+                sh 'terraform init'
+            }
+        }
+    }
+
+    stage('Terraform Validate') {
+        steps {
+            dir('terraform') {
+                sh 'terraform validate'
+            }
+        }
+    }
+
+    stage('Checkov IaC Scan') {
+        steps {
+            sh '''
+            mkdir -p reports/checkov
+            checkov -d terraform --output cli > reports/checkov/jenkins-checkov-report.txt || true
+            cat reports/checkov/jenkins-checkov-report.txt
+            '''
+        }
+    }
+
+    stage('Terraform Plan') {
+        steps {
+            dir('terraform') {
+                sh '''
+                terraform plan -var-file=envs/jenkins.tfvars -out=tfplan
+                terraform show -json tfplan > tfplan.json
+                '''
+            }
+        }
+    }
+
+    stage('OPA Policy Check') {
+        steps {
+            sh '''
+            mkdir -p reports/opa
+            opa eval --data security/opa/terraform-policy.rego --input terraform/tfplan.json "data.terraform.security.deny" > reports/opa/jenkins-opa-policy-result.json
+            cat reports/opa/jenkins-opa-policy-result.json
+            '''
+        }
+    }
+
+    stage('Terraform Apply') {
+        steps {
+            dir('terraform') {
+                sh 'terraform apply -auto-approve tfplan'
+            }
+        }
+    }
+
+    stage('Archive Security Reports') {
+        steps {
+            archiveArtifacts artifacts: 'reports/**/*', allowEmptyArchive: true
+        }
+    }
+}
+
+post {
+    success {
+        echo 'Secure AWS DevOps pipeline completed successfully.'
+    }
+
+    failure {
+        echo 'Pipeline failed. Review Terraform, Checkov, OPA, or AWS errors.'
+    }
+
+    always {
+        echo 'Pipeline execution finished.'
+    }
+}
+```
+
 }
