@@ -55,8 +55,8 @@
 		<testcase name="[NONE][CKV_AWS_260] Ensure no security groups allow ingress from 0.0.0.0:0 to port 80" classname="/modules/security-group/main.tf.module.security_group.aws_security_group.capstone_sg" file="/modules/security-group/main.tf"/>
 		<testcase name="[NONE][CKV_AWS_277] Ensure no security groups allow ingress from 0.0.0.0:0 to port -1" classname="/modules/security-group/main.tf.module.security_group.aws_security_group.capstone_sg" file="/modules/security-group/main.tf"/>
 		<testcase name="[NONE][CKV_AWS_41] Ensure no hard coded AWS access key and secret key exists in provider" classname="/provider.tf.aws.default" file="/provider.tf"/>
-		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/modules/iam/main.tf.module.iam.aws_iam_role.ec2_role" file="/modules/iam/main.tf"/>
 		<testcase name="[NONE][CKV2_AWS_41] Ensure an IAM role is attached to EC2 instance" classname="/modules/ec2/main.tf.module.ec2.aws_instance.capstone_server" file="/modules/ec2/main.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/modules/iam/main.tf.module.iam.aws_iam_role.ec2_role" file="/modules/iam/main.tf"/>
 		<testcase name="[NONE][CKV2_AWS_40] Ensure AWS IAM policy does not allow full IAM privileges" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf"/>
 		<testcase name="[NONE][CKV_AWS_135] Ensure that EC2 is EBS optimized" classname="/modules/ec2/main.tf.module.ec2.aws_instance.capstone_server" file="/modules/ec2/main.tf">
 			<failure type="failure" message="Ensure that EC2 is EBS optimized">
