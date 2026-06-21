@@ -102,3 +102,8 @@ pipeline {
         }
     }
 }
+environment {
+    AWS_DEFAULT_REGION = 'us-east-1'
+    AWS_PAGER = ''
+    TF_IN_AUTOMATION = 'true'
+}
