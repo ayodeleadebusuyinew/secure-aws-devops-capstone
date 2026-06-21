@@ -1,0 +1,378 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="8" tests="30" time="0.0">
+	<testsuite disabled="0" errors="0" failures="8" name="terraform scan" skipped="0" tests="30" time="0">
+		<properties>
+			<property name="directory" value="['terraform']"/>
+			<property name="add_check" value="False"/>
+			<property name="list" value="False"/>
+			<property name="output" value="['junitxml']"/>
+			<property name="output_bc_ids" value="False"/>
+			<property name="include_all_checkov_policies" value="True"/>
+			<property name="quiet" value="False"/>
+			<property name="compact" value="False"/>
+			<property name="framework" value="['all']"/>
+			<property name="skip_framework" value="[]"/>
+			<property name="run_all_external_checks" value="False"/>
+			<property name="soft_fail" value="False"/>
+			<property name="skip_results_upload" value="False"/>
+			<property name="repo_id" value="cli_repo/terraform"/>
+			<property name="branch" value="master"/>
+			<property name="skip_download" value="False"/>
+			<property name="use_enforcement_rules" value="False"/>
+			<property name="external_modules_download_path" value=".external_modules"/>
+			<property name="evaluate_variables" value="True"/>
+			<property name="no_cert_verify" value="False"/>
+			<property name="create_baseline" value="False"/>
+			<property name="output_baseline_as_skipped" value="False"/>
+			<property name="secrets_scan_file_type" value="[]"/>
+			<property name="enable_secret_scan_all_files" value="False"/>
+			<property name="block_list_secret_scan" value="[]"/>
+			<property name="summary_position" value="top"/>
+			<property name="skip_resources_without_violations" value="False"/>
+			<property name="deep_analysis" value="False"/>
+			<property name="no_fail_on_crash" value="False"/>
+			<property name="mask" value="defaultdict(&lt;class 'set'&gt;, {})"/>
+			<property name="scan_secrets_history" value="False"/>
+			<property name="secrets_history_timeout" value="12h"/>
+			<property name="custom_tool_name" value="Checkov"/>
+		</properties>
+		<testcase name="[NONE][CKV_AWS_386] Reduce potential for WhoAMI cloud image name confusion attack" classname="/main.tf.aws_ami.ubuntu" file="/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_46] Ensure no hard-coded secrets exist in EC2 user data" classname="/modules/ec2/main.tf.module.ec2.aws_instance.capstone_server" file="/modules/ec2/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_126] Ensure that detailed monitoring is enabled for EC2 instances" classname="/modules/ec2/main.tf.module.ec2.aws_instance.capstone_server" file="/modules/ec2/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_8] Ensure all data stored in the Launch configuration or instance Elastic Blocks Store is securely encrypted" classname="/modules/ec2/main.tf.module.ec2.aws_instance.capstone_server" file="/modules/ec2/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_393] Ensure AWS GitHub Actions OIDC authorization policies only allow safe claims and claim order on IAM role" classname="/modules/iam/main.tf.module.iam.aws_iam_role.ec2_role" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/modules/iam/main.tf.module.iam.aws_iam_role.ec2_role" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/modules/iam/main.tf.module.iam.aws_iam_role.ec2_role" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/modules/iam/main.tf.module.iam.aws_iam_role.ec2_role" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_287] Ensure IAM policies does not allow credentials exposure" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_289] Ensure IAM policies does not allow permissions management / resource exposure without constraints" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_286] Ensure IAM policies does not allow privilege escalation" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_23] Ensure every security group and rule has a description" classname="/modules/security-group/main.tf.module.security_group.aws_security_group.capstone_sg" file="/modules/security-group/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_24] Ensure no security groups allow ingress from 0.0.0.0:0 to port 22" classname="/modules/security-group/main.tf.module.security_group.aws_security_group.capstone_sg" file="/modules/security-group/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_25] Ensure no security groups allow ingress from 0.0.0.0:0 to port 3389" classname="/modules/security-group/main.tf.module.security_group.aws_security_group.capstone_sg" file="/modules/security-group/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_260] Ensure no security groups allow ingress from 0.0.0.0:0 to port 80" classname="/modules/security-group/main.tf.module.security_group.aws_security_group.capstone_sg" file="/modules/security-group/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_277] Ensure no security groups allow ingress from 0.0.0.0:0 to port -1" classname="/modules/security-group/main.tf.module.security_group.aws_security_group.capstone_sg" file="/modules/security-group/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_41] Ensure no hard coded AWS access key and secret key exists in provider" classname="/provider.tf.aws.default" file="/provider.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/modules/iam/main.tf.module.iam.aws_iam_role.ec2_role" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV2_AWS_41] Ensure an IAM role is attached to EC2 instance" classname="/modules/ec2/main.tf.module.ec2.aws_instance.capstone_server" file="/modules/ec2/main.tf"/>
+		<testcase name="[NONE][CKV2_AWS_40] Ensure AWS IAM policy does not allow full IAM privileges" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_135] Ensure that EC2 is EBS optimized" classname="/modules/ec2/main.tf.module.ec2.aws_instance.capstone_server" file="/modules/ec2/main.tf">
+			<failure type="failure" message="Ensure that EC2 is EBS optimized">
+Resource: module.ec2.aws_instance.capstone_server
+File: /modules/ec2/main.tf: 1-34
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-ec2-is-ebs-optimized
+
+		1  | resource &quot;aws_instance&quot; &quot;capstone_server&quot; {
+		2  |   ami                         = var.ami_id
+		3  |   instance_type               = var.instance_type
+		4  |   key_name                    = var.key_name
+		5  |   subnet_id                   = var.subnet_id
+		6  |   vpc_security_group_ids      = [var.security_group_id]
+		7  |   iam_instance_profile        = var.instance_profile_name
+		8  |   associate_public_ip_address = true
+		9  |   monitoring                  = true
+		10 | 
+		11 |   root_block_device {
+		12 |     volume_size           = 20
+		13 |     volume_type           = &quot;gp3&quot;
+		14 |     encrypted             = true
+		15 |     delete_on_termination = true
+		16 |   }
+		17 | 
+		18 |   user_data = &lt;&lt;-EOF
+		19 |               #!/bin/bash
+		20 |               apt update -y
+		21 |               apt install -y nginx curl wget
+		22 |               systemctl enable nginx
+		23 |               systemctl start nginx
+		24 |               echo &quot;&lt;h1&gt;Secure AWS DevOps Capstone&lt;/h1&gt;&lt;p&gt;Provisioned by Terraform and prepared for Jenkins CI/CD, DevSecOps, and monitoring.&lt;/p&gt;&quot; &gt; /var/www/html/index.html
+		25 |               EOF
+		26 | 
+		27 |   tags = {
+		28 |     Name        = &quot;${var.project_name}-${var.environment}-app-server&quot;
+		29 |     Environment = var.environment
+		30 |     ManagedBy   = &quot;Terraform&quot;
+		31 |     Project     = var.project_name
+		32 |     Security    = &quot;Hardened&quot;
+		33 |   }
+		34 | }</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_88] EC2 instance should not have public IP." classname="/modules/ec2/main.tf.module.ec2.aws_instance.capstone_server" file="/modules/ec2/main.tf">
+			<failure type="failure" message="EC2 instance should not have public IP.">
+Resource: module.ec2.aws_instance.capstone_server
+File: /modules/ec2/main.tf: 1-34
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/public-policies/public-12
+
+		1  | resource &quot;aws_instance&quot; &quot;capstone_server&quot; {
+		2  |   ami                         = var.ami_id
+		3  |   instance_type               = var.instance_type
+		4  |   key_name                    = var.key_name
+		5  |   subnet_id                   = var.subnet_id
+		6  |   vpc_security_group_ids      = [var.security_group_id]
+		7  |   iam_instance_profile        = var.instance_profile_name
+		8  |   associate_public_ip_address = true
+		9  |   monitoring                  = true
+		10 | 
+		11 |   root_block_device {
+		12 |     volume_size           = 20
+		13 |     volume_type           = &quot;gp3&quot;
+		14 |     encrypted             = true
+		15 |     delete_on_termination = true
+		16 |   }
+		17 | 
+		18 |   user_data = &lt;&lt;-EOF
+		19 |               #!/bin/bash
+		20 |               apt update -y
+		21 |               apt install -y nginx curl wget
+		22 |               systemctl enable nginx
+		23 |               systemctl start nginx
+		24 |               echo &quot;&lt;h1&gt;Secure AWS DevOps Capstone&lt;/h1&gt;&lt;p&gt;Provisioned by Terraform and prepared for Jenkins CI/CD, DevSecOps, and monitoring.&lt;/p&gt;&quot; &gt; /var/www/html/index.html
+		25 |               EOF
+		26 | 
+		27 |   tags = {
+		28 |     Name        = &quot;${var.project_name}-${var.environment}-app-server&quot;
+		29 |     Environment = var.environment
+		30 |     ManagedBy   = &quot;Terraform&quot;
+		31 |     Project     = var.project_name
+		32 |     Security    = &quot;Hardened&quot;
+		33 |   }
+		34 | }</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_79] Ensure Instance Metadata Service Version 1 is not enabled" classname="/modules/ec2/main.tf.module.ec2.aws_instance.capstone_server" file="/modules/ec2/main.tf">
+			<failure type="failure" message="Ensure Instance Metadata Service Version 1 is not enabled">
+Resource: module.ec2.aws_instance.capstone_server
+File: /modules/ec2/main.tf: 1-34
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-31
+
+		1  | resource &quot;aws_instance&quot; &quot;capstone_server&quot; {
+		2  |   ami                         = var.ami_id
+		3  |   instance_type               = var.instance_type
+		4  |   key_name                    = var.key_name
+		5  |   subnet_id                   = var.subnet_id
+		6  |   vpc_security_group_ids      = [var.security_group_id]
+		7  |   iam_instance_profile        = var.instance_profile_name
+		8  |   associate_public_ip_address = true
+		9  |   monitoring                  = true
+		10 | 
+		11 |   root_block_device {
+		12 |     volume_size           = 20
+		13 |     volume_type           = &quot;gp3&quot;
+		14 |     encrypted             = true
+		15 |     delete_on_termination = true
+		16 |   }
+		17 | 
+		18 |   user_data = &lt;&lt;-EOF
+		19 |               #!/bin/bash
+		20 |               apt update -y
+		21 |               apt install -y nginx curl wget
+		22 |               systemctl enable nginx
+		23 |               systemctl start nginx
+		24 |               echo &quot;&lt;h1&gt;Secure AWS DevOps Capstone&lt;/h1&gt;&lt;p&gt;Provisioned by Terraform and prepared for Jenkins CI/CD, DevSecOps, and monitoring.&lt;/p&gt;&quot; &gt; /var/www/html/index.html
+		25 |               EOF
+		26 | 
+		27 |   tags = {
+		28 |     Name        = &quot;${var.project_name}-${var.environment}-app-server&quot;
+		29 |     Environment = var.environment
+		30 |     ManagedBy   = &quot;Terraform&quot;
+		31 |     Project     = var.project_name
+		32 |     Security    = &quot;Hardened&quot;
+		33 |   }
+		34 | }</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_288] Ensure IAM policies does not allow data exfiltration" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf">
+			<failure type="failure" message="Ensure IAM policies does not allow data exfiltration">
+Resource: module.iam.aws_iam_role_policy.ec2_policy
+File: /modules/iam/main.tf: 24-45
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-288
+
+		24 | resource &quot;aws_iam_role_policy&quot; &quot;ec2_policy&quot; {
+		25 |   name = &quot;${var.project_name}-${var.environment}-ec2-policy&quot;
+		26 |   role = aws_iam_role.ec2_role.id
+		27 | 
+		28 |   policy = jsonencode({
+		29 |     Version = &quot;2012-10-17&quot;
+		30 |     Statement = [
+		31 |       {
+		32 |         Effect = &quot;Allow&quot;
+		33 |         Action = [
+		34 |           &quot;cloudwatch:PutMetricData&quot;,
+		35 |           &quot;ec2:DescribeTags&quot;,
+		36 |           &quot;logs:CreateLogGroup&quot;,
+		37 |           &quot;logs:CreateLogStream&quot;,
+		38 |           &quot;logs:PutLogEvents&quot;,
+		39 |           &quot;secretsmanager:GetSecretValue&quot;
+		40 |         ]
+		41 |         Resource = &quot;*&quot;
+		42 |       }
+		43 |     ]
+		44 |   })
+		45 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_355] Ensure no IAM policies documents allow &quot;*&quot; as a statement's resource for restrictable actions" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf">
+			<failure type="failure" message="Ensure no IAM policies documents allow &quot;*&quot; as a statement's resource for restrictable actions">
+Resource: module.iam.aws_iam_role_policy.ec2_policy
+File: /modules/iam/main.tf: 24-45
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-355
+
+		24 | resource &quot;aws_iam_role_policy&quot; &quot;ec2_policy&quot; {
+		25 |   name = &quot;${var.project_name}-${var.environment}-ec2-policy&quot;
+		26 |   role = aws_iam_role.ec2_role.id
+		27 | 
+		28 |   policy = jsonencode({
+		29 |     Version = &quot;2012-10-17&quot;
+		30 |     Statement = [
+		31 |       {
+		32 |         Effect = &quot;Allow&quot;
+		33 |         Action = [
+		34 |           &quot;cloudwatch:PutMetricData&quot;,
+		35 |           &quot;ec2:DescribeTags&quot;,
+		36 |           &quot;logs:CreateLogGroup&quot;,
+		37 |           &quot;logs:CreateLogStream&quot;,
+		38 |           &quot;logs:PutLogEvents&quot;,
+		39 |           &quot;secretsmanager:GetSecretValue&quot;
+		40 |         ]
+		41 |         Resource = &quot;*&quot;
+		42 |       }
+		43 |     ]
+		44 |   })
+		45 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_290] Ensure IAM policies does not allow write access without constraints" classname="/modules/iam/main.tf.module.iam.aws_iam_role_policy.ec2_policy" file="/modules/iam/main.tf">
+			<failure type="failure" message="Ensure IAM policies does not allow write access without constraints">
+Resource: module.iam.aws_iam_role_policy.ec2_policy
+File: /modules/iam/main.tf: 24-45
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-290
+
+		24 | resource &quot;aws_iam_role_policy&quot; &quot;ec2_policy&quot; {
+		25 |   name = &quot;${var.project_name}-${var.environment}-ec2-policy&quot;
+		26 |   role = aws_iam_role.ec2_role.id
+		27 | 
+		28 |   policy = jsonencode({
+		29 |     Version = &quot;2012-10-17&quot;
+		30 |     Statement = [
+		31 |       {
+		32 |         Effect = &quot;Allow&quot;
+		33 |         Action = [
+		34 |           &quot;cloudwatch:PutMetricData&quot;,
+		35 |           &quot;ec2:DescribeTags&quot;,
+		36 |           &quot;logs:CreateLogGroup&quot;,
+		37 |           &quot;logs:CreateLogStream&quot;,
+		38 |           &quot;logs:PutLogEvents&quot;,
+		39 |           &quot;secretsmanager:GetSecretValue&quot;
+		40 |         ]
+		41 |         Resource = &quot;*&quot;
+		42 |       }
+		43 |     ]
+		44 |   })
+		45 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_382] Ensure no security groups allow egress from 0.0.0.0:0 to port -1" classname="/modules/security-group/main.tf.module.security_group.aws_security_group.capstone_sg" file="/modules/security-group/main.tf">
+			<failure type="failure" message="Ensure no security groups allow egress from 0.0.0.0:0 to port -1">
+Resource: module.security_group.aws_security_group.capstone_sg
+File: /modules/security-group/main.tf: 1-44
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-382
+
+		1  | resource &quot;aws_security_group&quot; &quot;capstone_sg&quot; {
+		2  |   name        = &quot;${var.project_name}-${var.environment}-sg&quot;
+		3  |   description = &quot;Restricted security group for Secure AWS DevOps Capstone&quot;
+		4  |   vpc_id      = var.vpc_id
+		5  | 
+		6  |   ingress {
+		7  |     description = &quot;Restricted SSH access from engineer IP&quot;
+		8  |     from_port   = 22
+		9  |     to_port     = 22
+		10 |     protocol    = &quot;tcp&quot;
+		11 |     cidr_blocks = [var.my_ip]
+		12 |   }
+		13 | 
+		14 |   ingress {
+		15 |     description = &quot;HTTP access for application testing&quot;
+		16 |     from_port   = 80
+		17 |     to_port     = 80
+		18 |     protocol    = &quot;tcp&quot;
+		19 |     cidr_blocks = [var.my_ip]
+		20 |   }
+		21 | 
+		22 |   ingress {
+		23 |     description = &quot;Node Exporter metrics access&quot;
+		24 |     from_port   = 9100
+		25 |     to_port     = 9100
+		26 |     protocol    = &quot;tcp&quot;
+		27 |     cidr_blocks = [var.my_ip]
+		28 |   }
+		29 | 
+		30 |   egress {
+		31 |     description = &quot;Allow outbound internet access&quot;
+		32 |     from_port   = 0
+		33 |     to_port     = 0
+		34 |     protocol    = &quot;-1&quot;
+		35 |     cidr_blocks = [&quot;0.0.0.0/0&quot;]
+		36 |   }
+		37 | 
+		38 |   tags = {
+		39 |     Name        = &quot;${var.project_name}-${var.environment}-sg&quot;
+		40 |     Environment = var.environment
+		41 |     ManagedBy   = &quot;Terraform&quot;
+		42 |     Project     = var.project_name
+		43 |   }
+		44 | }</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_5] Ensure that Security Groups are attached to another resource" classname="/modules/security-group/main.tf.module.security_group.aws_security_group.capstone_sg" file="/modules/security-group/main.tf">
+			<failure type="failure" message="Ensure that Security Groups are attached to another resource">
+Resource: module.security_group.aws_security_group.capstone_sg
+File: /modules/security-group/main.tf: 1-44
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-that-security-groups-are-attached-to-ec2-instances-or-elastic-network-interfaces-enis
+
+		1  | resource &quot;aws_security_group&quot; &quot;capstone_sg&quot; {
+		2  |   name        = &quot;${var.project_name}-${var.environment}-sg&quot;
+		3  |   description = &quot;Restricted security group for Secure AWS DevOps Capstone&quot;
+		4  |   vpc_id      = var.vpc_id
+		5  | 
+		6  |   ingress {
+		7  |     description = &quot;Restricted SSH access from engineer IP&quot;
+		8  |     from_port   = 22
+		9  |     to_port     = 22
+		10 |     protocol    = &quot;tcp&quot;
+		11 |     cidr_blocks = [var.my_ip]
+		12 |   }
+		13 | 
+		14 |   ingress {
+		15 |     description = &quot;HTTP access for application testing&quot;
+		16 |     from_port   = 80
+		17 |     to_port     = 80
+		18 |     protocol    = &quot;tcp&quot;
+		19 |     cidr_blocks = [var.my_ip]
+		20 |   }
+		21 | 
+		22 |   ingress {
+		23 |     description = &quot;Node Exporter metrics access&quot;
+		24 |     from_port   = 9100
+		25 |     to_port     = 9100
+		26 |     protocol    = &quot;tcp&quot;
+		27 |     cidr_blocks = [var.my_ip]
+		28 |   }
+		29 | 
+		30 |   egress {
+		31 |     description = &quot;Allow outbound internet access&quot;
+		32 |     from_port   = 0
+		33 |     to_port     = 0
+		34 |     protocol    = &quot;-1&quot;
+		35 |     cidr_blocks = [&quot;0.0.0.0/0&quot;]
+		36 |   }
+		37 | 
+		38 |   tags = {
+		39 |     Name        = &quot;${var.project_name}-${var.environment}-sg&quot;
+		40 |     Environment = var.environment
+		41 |     ManagedBy   = &quot;Terraform&quot;
+		42 |     Project     = var.project_name
+		43 |   }
+		44 | }</failure>
+		</testcase>
+	</testsuite>
+</testsuites>
+
