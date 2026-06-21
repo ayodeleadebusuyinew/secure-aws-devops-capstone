@@ -1,75 +1,100 @@
 pipeline {
     agent any
 
-    options {
-        timestamps()
-        buildDiscarder(logRotator(numToKeepStr: '10'))
+    environment {
+        AWS_DEFAULT_REGION = 'us-east-1'
+        TF_IN_AUTOMATION = 'true'
     }
 
     stages {
-        stage('Code Checkout') {
+        stage('Checkout Code') {
             steps {
-                echo 'Checking out source code from GitHub...'
                 checkout scm
             }
         }
 
-        stage('Workspace Validation') {
+        stage('Terraform Format Check') {
             steps {
-                echo 'Validating capstone workspace structure...'
-                sh '''
-                echo "Current directory:"
-                pwd
+                dir('terraform') {
+                    sh 'terraform fmt -check -recursive'
+                }
+            }
+        }
 
-                echo "Listing project files:"
-                ls -la
+        stage('Terraform Init') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform init'
+                }
+            }
+        }
+
+        stage('Terraform Validate') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform validate'
+                }
+            }
+        }
+
+        stage('Checkov IaC Scan') {
+            steps {
+                sh '''
+                if [ -d ".venv-checkov" ]; then
+                  . .venv-checkov/bin/activate
+                  mkdir -p reports/checkov
+                  checkov -d terraform --output cli > reports/checkov/jenkins-checkov-report.txt || true
+                  deactivate
+                else
+                  echo "Checkov virtual environment not found. Install Checkov on Jenkins agent."
+                fi
                 '''
             }
         }
 
-        stage('Required Folder Check') {
+        stage('Terraform Plan') {
             steps {
-                echo 'Checking required project folders...'
-                sh '''
-                test -d terraform
-                test -d jenkins
-                test -d security
-                test -d monitoring
-                test -d docs
-                test -d scripts
+                dir('terraform') {
+                    sh '''
+                    terraform plan -var-file=envs/dev.tfvars -out=tfplan
+                    terraform show -json tfplan > tfplan.json
+                    '''
+                }
+            }
+        }
 
-                echo "All required folders exist."
+        stage('OPA Policy Check') {
+            steps {
+                sh '''
+                mkdir -p reports/opa
+                opa eval --data security/opa/terraform-policy.rego --input terraform/tfplan.json "data.terraform.security.deny" > reports/opa/jenkins-opa-policy-result.json
+                cat reports/opa/jenkins-opa-policy-result.json
                 '''
             }
         }
 
-        stage('Basic Build Validation') {
+        stage('Terraform Apply') {
             steps {
-                echo 'Running basic validation for project files...'
-                sh '''
-                test -f README.md
-                test -f jenkins/Jenkinsfile
-                test -f docs/task-1-cicd-foundation.md
-
-                echo "Basic project validation completed successfully."
-                '''
+                dir('terraform') {
+                    sh 'terraform apply -auto-approve tfplan'
+                }
             }
         }
 
-        stage('Deployment Trigger Placeholder') {
+        stage('Archive Security Reports') {
             steps {
-                echo 'Deployment trigger stage prepared. Terraform deployment will be integrated in Task 2.'
+                archiveArtifacts artifacts: 'reports/**/*', allowEmptyArchive: true
             }
         }
     }
 
     post {
         success {
-            echo 'Task 1 CI/CD foundation pipeline completed successfully.'
+            echo 'Secure AWS DevOps pipeline completed successfully.'
         }
 
         failure {
-            echo 'Task 1 pipeline failed. Review the console output and fix the issue.'
+            echo 'Pipeline failed. Review Terraform, Checkov, OPA, or AWS errors.'
         }
 
         always {
