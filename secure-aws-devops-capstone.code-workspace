@@ -1,0 +1,34 @@
+{
+  "folders": [
+    {
+      "name": "Capstone Root",
+      "path": "."
+    },
+    {
+      "name": "Terraform IaC",
+      "path": "terraform"
+    },
+    {
+      "name": "Jenkins Pipeline",
+      "path": "jenkins"
+    },
+    {
+      "name": "Security",
+      "path": "security"
+    },
+    {
+      "name": "Monitoring",
+      "path": "monitoring"
+    },
+    {
+      "name": "Documentation",
+      "path": "docs"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "terminal.integrated.defaultProfile.linux": "bash"
+  }
+}

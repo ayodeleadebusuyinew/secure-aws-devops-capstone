@@ -1,0 +1,79 @@
+pipeline {
+    agent any
+
+    options {
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+
+    stages {
+        stage('Code Checkout') {
+            steps {
+                echo 'Checking out source code from GitHub...'
+                checkout scm
+            }
+        }
+
+        stage('Workspace Validation') {
+            steps {
+                echo 'Validating capstone workspace structure...'
+                sh '''
+                echo "Current directory:"
+                pwd
+
+                echo "Listing project files:"
+                ls -la
+                '''
+            }
+        }
+
+        stage('Required Folder Check') {
+            steps {
+                echo 'Checking required project folders...'
+                sh '''
+                test -d terraform
+                test -d jenkins
+                test -d security
+                test -d monitoring
+                test -d docs
+                test -d scripts
+
+                echo "All required folders exist."
+                '''
+            }
+        }
+
+        stage('Basic Build Validation') {
+            steps {
+                echo 'Running basic validation for project files...'
+                sh '''
+                test -f README.md
+                test -f jenkins/Jenkinsfile
+                test -f docs/task-1-cicd-foundation.md
+
+                echo "Basic project validation completed successfully."
+                '''
+            }
+        }
+
+        stage('Deployment Trigger Placeholder') {
+            steps {
+                echo 'Deployment trigger stage prepared. Terraform deployment will be integrated in Task 2.'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Task 1 CI/CD foundation pipeline completed successfully.'
+        }
+
+        failure {
+            echo 'Task 1 pipeline failed. Review the console output and fix the issue.'
+        }
+
+        always {
+            echo 'Pipeline execution finished.'
+        }
+    }
+}
