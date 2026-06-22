@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     AWS_DEFAULT_REGION = 'us-east-1'
     AWS_PAGER = ''
@@ -111,6 +110,5 @@ post {
         echo 'Pipeline execution finished.'
     }
 }
-```
 
 }
