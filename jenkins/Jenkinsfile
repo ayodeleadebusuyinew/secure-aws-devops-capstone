@@ -36,12 +36,16 @@ stages {
     }
 
     stage('Terraform Init') {
-        steps {
-            dir('terraform') {
-                sh 'terraform init -input=false -reconfigure'
-            }
+    steps {
+        dir('terraform') {
+            sh '''
+            rm -rf .terraform
+            rm -f terraform.tfstate terraform.tfstate.backup
+            terraform init -input=false -reconfigure
+            '''
         }
     }
+}
 
     stage('Terraform Validate') {
         steps {
